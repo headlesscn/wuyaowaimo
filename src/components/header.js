@@ -7,10 +7,10 @@ import Logo from "../images/logo.svg"
 const Header = ({ siteName, slogan }) => (
   <div class="mt-2">
     <header class="container is-max-widescreen">
-      <div class="level">
+      <div class="level is-mobile">
         <div class="level-left">
           <Link to="/" className="has-text-primary">
-            <div class="media">
+            <div class="media site-logo-container">
               <figure class="media-left image is-64x64">
                 <img src={LogoIcon} alt="Logo icon" />
               </figure>
@@ -18,15 +18,13 @@ const Header = ({ siteName, slogan }) => (
                 <figure class="image mt-1">
                   <img src={Logo} alt={siteName} />
                 </figure>
-                <h3 class="has-text-weight-bold is-size-7" style={{
-                  letterSpacing: `1rem`
-                }}>{slogan}</h3>
+                <h3 class="has-text-weight-bold is-size-7">{slogan}</h3>
               </div>
             </div>
           </Link>
         </div>
         <div class="level-right">
-          <table>
+          <table class="price-table">
             <tbody>
               <tr>
                 <th class="has-text-right has-text-weight-normal pr-2">¥</th>

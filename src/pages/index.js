@@ -30,7 +30,7 @@ const IndexPage = ({ data }) => {
         <div class="columns is-multiline">
           {indexModels.map(({ node }) => {
             return (
-              <div class="column is-half-mobile is-one-third-tablet is-one-quarter-desktop">
+              <div class="column is-one-third-tablet is-one-quarter-desktop">
                 <Link to="/">
                   <div class="card">
                     <div class="card-image">
@@ -38,7 +38,7 @@ const IndexPage = ({ data }) => {
                         <img src={node.CoverPicture.publicURL} />
                       </figure>
                     </div>
-                    <div class="card-content level">
+                    <div class="card-content level is-mobile">
                       <div class="level-left">
                         {node.LivingCity.DisplayName}
                       </div>

@@ -26,3 +26,32 @@ $footer-background-color: $body-background-color;
 $card-content-padding: 0.5rem;
 
 @import "~bulma/bulma.sass";
+
+.site-logo-container {
+  h3 {
+    letter-spacing: 0.75rem;
+  }
+  @include mobile {
+    margin-left: 1rem;
+    .media-left {
+      width: 48px;
+    }
+    .media-right .image {
+      text-align: left;
+    }
+    .media-right .image img {
+      width: 123px;
+      height: 32px;
+    }
+    h3 {
+      letter-spacing: 0.5rem;
+    }
+  }
+}
+
+.price-table {
+  @include mobile {
+    margin-right: 1rem;
+    font-size: 0.75rem;
+  }
+}
