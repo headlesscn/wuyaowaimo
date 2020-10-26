@@ -32,9 +32,9 @@ $card-content-padding: 0.5rem;
     letter-spacing: 0.75rem;
   }
   @include mobile {
-    margin-left: 1rem;
     .media-left {
       width: 48px;
+      margin-right: 0.25rem;
     }
     .media-right .image {
       text-align: left;
@@ -47,11 +47,17 @@ $card-content-padding: 0.5rem;
       letter-spacing: 0.5rem;
     }
   }
+  @include until($desktop) {
+    margin-left: 1rem;
+  }
 }
 
 .price-table {
+  font-size: 0.875rem;
   @include mobile {
-    margin-right: 1rem;
     font-size: 0.75rem;
+  }
+  @include until($desktop) {
+    margin-right: 1rem;
   }
 }
