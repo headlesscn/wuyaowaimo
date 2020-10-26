@@ -39,8 +39,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   const models = result.data.allStrapiModel.edges
 
-  console.log('xxx')
-
   if (models.length > 0) {
     
     models.forEach(model => {
@@ -81,16 +79,16 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   // })
 }
 
-exports.onCreateNode = ({ node, actions, getNode }) => {
-  const { createNodeField } = actions
+// exports.onCreateNode = ({ node, actions, getNode }) => {
+//   const { createNodeField } = actions
 
-  if (node.internal.type === `StrapiModel`) {
-    const value = createFilePath({ node, getNode, basePath: `templates` })
+//   if (node.internal.type === `StrapiModel`) {
+//     const value = createFilePath({ node, getNode, basePath: `templates` })
 
-    createNodeField({
-      name: `slug`,
-      node,
-      value,
-    })
-  }
-}
+//     createNodeField({
+//       name: `slug`,
+//       node,
+//       value,
+//     })
+//   }
+// }
