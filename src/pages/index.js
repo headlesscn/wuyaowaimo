@@ -5,18 +5,76 @@ import Layout from "../components/layout"
 import Image from "../components/image"
 import SEO from "../components/seo"
 
-const IndexPage = () => (
+import "./styles.scss"
+
+const IndexPage = ({ data }) => {
+  const indexModels = data.allStrapiModel.edges;
+
+  function calculatePriceMark (priceLow, priceHigh) {
+    var priceMark = '¥';
+    var avgPrice = (priceHigh + priceLow) / 2;
+    if (avgPrice > 1500) {
+      priceMark = '¥¥¥';
+    } else if (avgPrice > 1000) {
+      priceMark = '¥¥'
+    }
+    return priceMark
+  }
+
+  return (
   <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
+    <SEO title="首页" />
+
+    <div class="section">
+      <div class="container is-max-widescreen">
+        <div class="columns is-multiline">
+          {indexModels.map(({ node }) => {
+            return (
+              <div class="column is-half-mobile is-one-third-tablet is-one-quarter-desktop">
+                <Link to="/">
+                  <div class="card">
+                    <div class="card-image">
+                      <figure class="image is-square cover-image-thumbnail">
+                        <img src={node.CoverPicture.publicURL} />
+                      </figure>
+                    </div>
+                    <div class="card-content level">
+                      <div class="level-left">
+                        {node.LivingCity.DisplayName}
+                      </div>
+                      <div class="level-right">
+                        {calculatePriceMark(node.PayRangeLow, node.PayRangeHigh)}
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              </div>
+            )
+          })}
+        </div>
+      </div>
     </div>
-    <Link to="/page-2/">Go to page 2</Link> <br />
-    <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
   </Layout>
-)
+)}
 
 export default IndexPage
+
+export const pageQuery = graphql`
+  query {
+    allStrapiModel {
+      edges {
+        node {
+          DisplayName
+          CoverPicture {
+            publicURL
+          }
+          LivingCity {
+            DisplayName
+          }
+          PayRangeLow
+          PayRangeHigh
+        }
+      }
+    }
+  }
+`

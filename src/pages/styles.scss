@@ -1,0 +1,28 @@
+@charset "utf-8";
+
+// Change variables before importing Bulma
+
+// Set brand colors
+$pink-light: #FFF1ED;
+$pink-medium: #FFE3E2;
+$pink: #FF8297;
+
+$blue-light: #5779BA;
+$blue: #374C73;
+$blue-dark: #1C2A45;
+
+$red: #CF1941;
+
+$green: #058762;
+
+// Update Bulma's variables
+$body-background-color: $pink-light;
+$text: $blue-dark;
+$primary: $blue;
+$link: $blue-light;
+
+$footer-background-color: $body-background-color;
+
+$card-content-padding: 0.5rem;
+
+@import "~bulma/bulma.sass";
