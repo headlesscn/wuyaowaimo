@@ -31,7 +31,7 @@ const IndexPage = ({ data }) => {
           {indexModels.map(({ node }) => {
             return (
               <div class="column is-one-third-tablet is-one-quarter-desktop">
-                <Link to="/">
+                <Link to={`/model/${node.strapiId}`}>
                   <div class="card">
                     <div class="card-image">
                       <figure class="image is-square cover-image-thumbnail">
@@ -64,6 +64,7 @@ export const pageQuery = graphql`
     allStrapiModel {
       edges {
         node {
+          strapiId
           DisplayName
           CoverPicture {
             publicURL

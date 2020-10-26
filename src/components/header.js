@@ -5,7 +5,7 @@ import LogoIcon from "../images/51waimo-icon.png"
 import Logo from "../images/logo.svg"
 
 const Header = ({ siteName, slogan }) => (
-  <div class="mt-2">
+  <div class="mt-4">
     <header class="container is-max-widescreen">
       <div class="level is-mobile">
         <div class="level-left">
