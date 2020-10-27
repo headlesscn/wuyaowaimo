@@ -12,7 +12,7 @@ const Footer = ({ siteName, beian, cities }) => (
             <span class="mr-2">{node.DisplayName}</span>
           )
         })}
-        <span class="mr-4"><Link to="https://beian.miit.gov.cn/" className="has-text-dark">{beian}</Link></span>
+        <span class="mr-4"><a href="https://beian.miit.gov.cn/" class="has-text-dark" rel="noreferrer" target="_blank">{beian}</a></span>
       </p>
     </div>
   </footer>

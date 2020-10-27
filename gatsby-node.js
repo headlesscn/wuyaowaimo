@@ -51,44 +51,4 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       })
     })
   }
-
-  
-  // const result = await graphql(`
-  //   query {
-  //     allMarkdownRemark {
-  //       edges {
-  //         node {
-  //           fields {
-  //             slug
-  //           }
-  //         }
-  //       }
-  //     }
-  //   }
-  // `)
-  // result.data.allMarkdownRemark.edges.forEach(({ node }) => {
-  //   createPage({
-  //     path: node.fields.slug,
-  //     component: path.resolve(`./src/templates/blog-post.js`),
-  //     context: {
-  //       // Data passed to context is available
-  //       // in page queries as GraphQL variables.
-  //       slug: node.fields.slug,
-  //     },
-  //   })
-  // })
 }
-
-// exports.onCreateNode = ({ node, actions, getNode }) => {
-//   const { createNodeField } = actions
-
-//   if (node.internal.type === `StrapiModel`) {
-//     const value = createFilePath({ node, getNode, basePath: `templates` })
-
-//     createNodeField({
-//       name: `slug`,
-//       node,
-//       value,
-//     })
-//   }
-// }

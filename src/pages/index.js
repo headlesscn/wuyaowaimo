@@ -35,7 +35,7 @@ const IndexPage = ({ data }) => {
                   <div class="card">
                     <div class="card-image">
                       <figure class="image is-square cover-image-thumbnail">
-                        <img src={node.CoverPicture.publicURL} />
+                        <img src={node.CoverPicture.publicURL} alt="" />
                       </figure>
                     </div>
                     <div class="card-content level is-mobile is-size-7">
