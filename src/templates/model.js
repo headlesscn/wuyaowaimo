@@ -82,8 +82,6 @@ const ModelTemplate = ({ data }) => {
                 <h3>
                   模特视频
                 </h3>
-                <p>
-                { model.strapiModel.video.VideoFile && model.strapiModel.video.VideoFile.url}</p>
                 <video controls>
                   <source src='https://res.cloudinary.com/waimo/video/upload/v1604047749/114c5c85780a256fc32bcd1615df2c0b_9b848f18a4.mp4' type={model.strapiModel.video.VideoFile.mime} />
                 </video>
