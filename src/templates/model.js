@@ -58,6 +58,10 @@ const ModelTemplate = ({ data }) => {
   return (
     <Layout>
       <Helmet>
+        <link href="https://unpkg.com/cloudinary-video-player@1.4.3/dist/cld-video-player.min.css" rel="stylesheet" />
+        <script src="https://unpkg.com/cloudinary-core@2.10.3/cloudinary-core-shrinkwrap.min.js" type="text/javascript"></script>
+        <script src="https://unpkg.com/cloudinary-video-player@1.4.3/dist/cld-video-player.min.js" type="text/javascript"></script>
+
         <script src="https://cdn.bootcdn.net/ajax/libs/jquery/2.2.4/jquery.min.js" type="text/javascript" />
         <script src={withPrefix('model-script.js')} type="text/javascript" />
       </Helmet>
@@ -71,7 +75,27 @@ const ModelTemplate = ({ data }) => {
           <h1 class="title">{model.strapiModel.DisplayName}</h1>
           <div class="columns">
             <div class="column">
-            <img src={model.strapiModel.CoverPicture.publicURL} alt="" />
+              <div>
+                <img src={model.strapiModel.CoverPicture.publicURL} alt="" />
+              </div>
+              <div>
+                <h3>
+                  模特视频
+                </h3>
+                <p>{model.strapiModel.video.VideoFile.url}</p>
+                <video controls>
+                  <source src='https://res.cloudinary.com/waimo/video/upload/v1604047749/114c5c85780a256fc32bcd1615df2c0b_9b848f18a4.mp4' type={model.strapiModel.video.VideoFile.mime} />
+                </video>
+
+                <iframe
+  src="https://player.cloudinary.com/embed/?public_id=114c5c85780a256fc32bcd1615df2c0b_9b848f18a4&cloud_name=waimo&player%5Bfluid%5D=true&player%5Bcontrols%5D=true&source%5Bsource_types%5D%5B0%5D=mp4"
+  width="640"
+  height="480"
+  allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
+  allowfullscreen
+  frameborder="0"
+></iframe>
+              </div>
             </div>
             <div class="column">
               <div class="columns is-mobile">
@@ -255,6 +279,12 @@ export const pageQuery = graphql`
       }
       CoverPicture {
         publicURL
+      }
+      video {
+        VideoFile {
+          url
+          mime
+        }
       }
     }
   }

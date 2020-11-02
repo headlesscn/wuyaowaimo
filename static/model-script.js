@@ -7,3 +7,4 @@ $("#open-model-modal-btn").click(function() {
 $(".modal-close").click(function() {
   $(this).parent().removeClass("is-active");
 });
+
