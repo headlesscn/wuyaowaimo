@@ -6,6 +6,7 @@ module.exports = {
     description: `51外模是专业的外模平台，涵盖外模平面拍摄，视频拍摄，外籍演艺人才。资源丰富的外模库，友好的模特遴选流程，服务能力覆盖北京、上海、深圳、杭州、广州、成都、重庆等大中城市。`,
     author: `@51外模`,
     beian: `备案号`,
+    siteUrl: `https://www.51waimo.cn`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
