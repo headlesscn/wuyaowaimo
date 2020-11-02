@@ -86,14 +86,7 @@ const ModelTemplate = ({ data }) => {
                   <source src='https://res.cloudinary.com/waimo/video/upload/v1604047749/114c5c85780a256fc32bcd1615df2c0b_9b848f18a4.mp4' />
                 </video>
 
-                <iframe
-  src="https://player.cloudinary.com/embed/?public_id=114c5c85780a256fc32bcd1615df2c0b_9b848f18a4&cloud_name=waimo&player%5Bfluid%5D=true&player%5Bcontrols%5D=true&source%5Bsource_types%5D%5B0%5D=mp4"
-  width="640"
-  height="480"
-  allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
-  allowfullscreen
-  frameborder="0"
-></iframe>
+                
               </div>
             </div>
             <div class="column">
