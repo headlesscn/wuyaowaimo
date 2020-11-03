@@ -46,7 +46,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         path: `/model/${model.node.strapiId}/`,
         component: modelPage,
         context: {
-          id: model.node.id
+          strapiId: model.node.strapiId
         },
       })
     })

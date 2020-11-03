@@ -6,7 +6,10 @@ import SEO from "../components/seo"
 
 
 const ModelTemplate = ({ data }) => {
-  const model = data;
+  console.log(data);
+  const model = data.strapiModel;
+  const modelPictures = data.allStrapiPicture.edges;
+  const modelVideos = data.allStrapiVideo.edges;
 
   function displayGender (gender) {
     var genderDisplayName = '女';
@@ -66,133 +69,149 @@ const ModelTemplate = ({ data }) => {
         <script src={withPrefix('model-script.js')} type="text/javascript" />
       </Helmet>
       <SEO 
-        title={`${model.strapiModel.DisplayName} 模特详情`}
-        description={`模特 ${model.strapiModel.DisplayName} 能满足您的外出拍摄、平面拍摄、视频拍摄需求。${model.strapiModel.DisplayName} 位于${model.strapiModel.LivingCity.DisplayName}。51外模，专业外模平台，找外模，上51外模网`}
+        title={`${model.DisplayName} 模特详情`}
+        description={`模特 ${model.DisplayName} 能满足您的外出拍摄、平面拍摄、视频拍摄需求。51外模，专业外模平台，找外模，上51外模网`}
       />
 
       <div class="section">
         <div class="container is-max-widescreen">
-          <h1 class="title">{model.strapiModel.DisplayName}</h1>
+          <h1 class="title">{model.DisplayName}</h1>
           <div class="columns">
             <div class="column">
               <div>
-                <img src={model.strapiModel.CoverPicture.publicURL} alt="" />
-              </div>
-              <div>
-                <h3>
-                  模特视频
-                </h3>
-                <video controls>
-                  <source src='https://res.cloudinary.com/waimo/video/upload/v1604047749/114c5c85780a256fc32bcd1615df2c0b_9b848f18a4.mp4' />
-                </video>
-
-                
+                <div class="columns is-mobile">
+                  
+                  {
+                  modelPictures.map(({ node }) => {
+                    return (
+                      <div class="column">
+                        <img src={node.Picturefile.publicURL} />
+                      </div>
+                    )
+                  })}
+                </div>
+                {modelVideos &&
+                  <div>
+                    <h3>模特视频</h3>
+                    <div class="columns is-mobile">
+                    {modelVideos.map(({ node }) => {
+                      return (
+                        <div class="column">
+                          <video controls>
+                            <source src={node.VideoFile.publicURL} />
+                          </video>
+                        </div>
+                      )
+                    })}
+                    </div>
+                  </div>
+                }
               </div>
             </div>
             <div class="column">
               <div class="columns is-mobile">
                 <div class="column">
                   <div class="kv-label">姓名</div>
-                  <div class="kv-value">{model.strapiModel.DisplayName}</div>
+                  <div class="kv-value">{model.DisplayName}</div>
                 </div>
                 
               </div>
               <div class="columns is-mobile">
-                { model.strapiModel.Gender && 
+                { model.Gender && 
                   <div class="column">
                     <div class="kv-label">性别</div>
-                    <div class="kv-value">{displayGender(model.strapiModel.Gender)}</div>
+                    <div class="kv-value">{displayGender(model.Gender)}</div>
                   </div>
                 }
-                { model.strapiModel.DateOfBirth && 
+                { model.DateOfBirth && 
                   <div class="column">
                     <div class="kv-label">年龄</div>
-                    <div class="kv-value">{calculateAge(model.strapiModel.DateOfBirth)}</div>
+                    <div class="kv-value">{calculateAge(model.DateOfBirth)}</div>
                   </div>
                 }
               </div>
               <div class="columns is-mobile">
-                { model.strapiModel.PlaceOfBirth &&
+                { model.PlaceOfBirth &&
                   <div class="column">
                     <div class="kv-label">出生地</div>
-                    <div class="kv-value">{model.strapiModel.PlaceOfBirth}</div>
+                    <div class="kv-value">{model.PlaceOfBirth}</div>
                   </div>
                 }
-                { model.strapiModel.LivingCity &&
+                { model.LivingCity &&
                   <div class="column">
                     <div class="kv-label">当前城市</div>
-                    <div class="kv-value">{model.strapiModel.LivingCity.DisplayName}</div>
+                    <div class="kv-value">{model.LivingCity.DisplayName}</div>
                   </div>
                 }
               </div>
               <div class="columns is-mobile">
-                { model.strapiModel.Height &&
+                { model.Height &&
                   <div class="column">
-                    <div class="kv-label">身高{model.strapiModel.Weight ? '体重' : ''}</div>
+                    <div class="kv-label">身高{model.Weight ? '体重' : ''}</div>
                     <div class="kv-value">
-                      {model.strapiModel.Height}cm
-                      {model.strapiModel.Weight ? ' / ' + model.strapiModel.Weight + 'kg' : ''}
+                      {model.Height}cm
+                      {model.Weight ? ' / ' + model.Weight + 'kg' : ''}
                     </div>
                   </div>
                 }
-                { model.strapiModel.Bust &&
+                { model.Bust &&
                   <div class="column">
                     <div class="kv-label">三围</div>
                     <div class="kv-value">
-                      {model.strapiModel.Bust + ' / ' + model.strapiModel.Waist + ' / ' + model.strapiModel.Hips}
-                      {model.strapiModel.CupSize ? ' (Cup: ' + model.strapiModel.CupSize + ')' : ''}
+                      {model.Bust + ' / ' + model.Waist + ' / ' + model.Hips}
+                      {model.CupSize ? ' (Cup: ' + model.CupSize + ')' : ''}
                     </div>
                   </div>
                 }
               </div>
               <div class="columns is-mobile">
-                { model.strapiModel.SkinColor &&
+                { model.SkinColor &&
                   <div class="column">
                     <div class="kv-label">肤色</div>
-                    <div class="kv-value">{translateColor(model.strapiModel.SkinColor)}</div>
+                    <div class="kv-value">{translateColor(model.SkinColor)}</div>
                   </div>
                 }
-                { model.strapiModel.HairColor &&
+                { model.HairColor &&
                   <div class="column">
                     <div class="kv-label">头发颜色</div>
-                    <div class="kv-value">{translateColor(model.strapiModel.HairColor)}</div>
+                    <div class="kv-value">{translateColor(model.HairColor)}</div>
                   </div>
                 }
               </div>
               <div class="columns is-mobile">
-                { model.strapiModel.EyesColor &&
+                { model.EyesColor &&
                   <div class="column">
                     <div class="kv-label">眼睛颜色</div>
-                    <div class="kv-value">{translateColor(model.strapiModel.EyesColor)}</div>
+                    <div class="kv-value">{translateColor(model.EyesColor)}</div>
                   </div>
                 }
-                { model.strapiModel.ShoeSize &&
+                { model.ShoeSize &&
                   <div class="column">
                     <div class="kv-label">鞋子尺码</div>
-                    <div class="kv-value">{model.strapiModel.ShoeSize}</div>
+                    <div class="kv-value">{model.ShoeSize}</div>
                   </div>
                 }
               </div>
               <div class="columns is-mobile">
-                { model.strapiModel.LanguageFirst &&
+                { model.LanguageFirst &&
                   <div class="column">
                     <div class="kv-label">语种</div>
                     <div class="kv-value">
-                      {model.strapiModel.LanguageFirst.Chinese}
-                      {model.strapiModel.LanguageSecond ? ' / ' + model.strapiModel.LanguageSecond.Chinese: ''}
+                      {model.LanguageFirst.Chinese}
+                      {model.LanguageSecond ? ' / ' + model.LanguageSecond.Chinese: ''}
                     </div>
                   </div>
                 }
               </div>
               <div class="columns is-mobile">
-                { model.strapiModel.PayRangeLow &&
+                { model.PayRangeLow &&
                   <div class="column">
                     <div class="kv-label">价格</div>
-                    <div class="kv-value">{displayPay(model.strapiModel.PayRangeLow, model.strapiModel.PayRangeHigh)}</div>
+                    <div class="kv-value">{displayPay(model.PayRangeLow, model.PayRangeHigh)}</div>
                   </div>
                 }
               </div>
-              { model.strapiModel.agent &&
+              { model.agent &&
                 <div>
                   <button id="open-model-modal-btn" class="button is-primary" data-target="agent-contact-modal" aria-haspopup="true">联系下单</button>
                   <div>
@@ -205,11 +224,11 @@ const ModelTemplate = ({ data }) => {
                         <div class="media">
                           <div class="media-left">
                             <figure class="image is-128x128">
-                              <img src={model.strapiModel.agent.QRCode.publicURL} alt="" />
+                              <img src={model.agent.QRCode.publicURL} alt="" />
                             </figure>
                           </div>
                           <div class="media-content">
-                            <h4 class="title is-5">Hi, 我是模特 {model.strapiModel.DisplayName} 的经纪人 {model.strapiModel.agent.DisplayName}</h4>
+                            <h4 class="title is-5">Hi, 我是模特 {model.DisplayName} 的经纪人 {model.agent.DisplayName}</h4>
                             <p>请用微信扫描左侧的二维码联系我，我将为您对接模特本人，协助下单并提供全程服务。</p>
                           </div>
                         </div>
@@ -233,9 +252,39 @@ export default ModelTemplate
 
 
 export const pageQuery = graphql`
-  query ModelQuery($id: String!) {
+  query ModelQuery($strapiId: String!) {
+    allStrapiPicture(
+      filter: {
+        model: {
+          id: { eq: $strapiId }
+        }
+      }
+    ) {
+      edges {
+        node {
+          Picturefile {
+            publicURL
+          }
+        }
+      }
+    }
+    allStrapiVideo(
+      filter: {
+        model: {
+          id: { eq: $strapiId }
+        }
+      }
+    ) {
+      edges {
+        node {
+          VideoFile {
+            publicURL
+          }
+        }
+      }
+    }
     strapiModel(
-      id: {eq: $id}
+      strapiId: {eq: $strapiId}
     ) {
       id
       DisplayName
@@ -271,12 +320,6 @@ export const pageQuery = graphql`
       }
       CoverPicture {
         publicURL
-      }
-      video {
-        VideoFile {
-          url
-          mime
-        }
       }
     }
   }

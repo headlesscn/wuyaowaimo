@@ -39,7 +39,7 @@ const IndexPage = ({ data }) => {
                     </div>
                     <div class="card-content level is-mobile is-size-7">
                       <div class="level-left">
-                        {node.LivingCity.DisplayName}
+                        {node.LivingCity && node.LivingCity.DisplayName}
                       </div>
                       <div class="level-right">
                         {calculatePriceMark(node.PayRangeLow, node.PayRangeHigh)}

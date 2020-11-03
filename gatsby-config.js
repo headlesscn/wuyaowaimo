@@ -58,6 +58,8 @@ module.exports = {
           "model",
           "city",
           "agent",
+          "picture",
+          "video",
         ],
         queryLimit: 1000,
       },
