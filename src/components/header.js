@@ -10,23 +10,27 @@ const Header = ({ siteName, slogan, cities }) => (
     <header class="container is-max-widescreen">
       <div class="columns is-vcentered">
         <div class="column is-one-quarter-tablet">
-          <Link to="/" className="has-text-primary">
-            <div class="media site-logo-container">
-              <figure class="media-left image is-64x64">
-                <img src={LogoIcon} alt="Logo icon" />
-              </figure>
-              <div class="media-right ml-0">
-                <figure class="image mt-1">
-                  <img src={Logo} alt={siteName} />
+          <div class="site-logo-container">
+            <Link to="/" className="has-text-primary">
+              <div class="media">
+                <figure class="media-left image is-64x64">
+                  <img src={LogoIcon} alt="Logo icon" />
                 </figure>
-                <h3 class="has-text-weight-bold is-size-7">{slogan}</h3>
+                <div class="media-right ml-0">
+                  <figure class="image mt-1">
+                    <img src={Logo} alt={siteName} />
+                  </figure>
+                  <h3 class="has-text-weight-bold is-size-7">{slogan}</h3>
+                </div>
               </div>
-            </div>
-          </Link>
+            </Link>
+          </div>
         </div>
           
         {cities &&
-        <div class="column">
+        <div class="column" style={{
+          padding: 0
+        }}>
           <div class="city-list">
             {cities.map(({ node }) => {
               return (

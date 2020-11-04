@@ -112,7 +112,7 @@ const ModelTemplate = ({ data }) => {
                 }
               </div>
             </div>
-            <div class="column">
+            <div class="column kv-container">
               <div class="columns is-mobile">
                 <div class="column">
                   <div class="kv-label">姓名</div>

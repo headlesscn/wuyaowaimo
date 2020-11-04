@@ -26,7 +26,7 @@ const IndexPage = ({ data }) => {
 
     <div class="section">
       <div class="container is-max-widescreen">
-        <div class="columns is-multiline">
+        <div class="columns is-mobile is-multiline">
           {indexModels.map(({ node }) => {
             return (
               <div class="column is-half-mobile is-one-third-tablet is-one-quarter-desktop">

@@ -65,20 +65,35 @@ $card-content-padding: 0.5rem;
   }
 }
 
+.kv-container .column {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+.kv-label,
+.kv-value {
+  display: inline-block;
+  font-size: 0.875rem;
+  @include mobile {
+    font-size: 0.75rem;
+  }
+}
 .kv-label {
-  font-size: 0.75rem;
-  font-weight: 600;
+  margin-right: 0.75rem;
+  color: $WM-gray-medium;
+}
+.kv-value {
+  color: $WM-gray-dark;
 }
 
 .city-list {
   margin-left: 3rem;
+  text-align: center;
   letter-spacing: 0.2rem;
   @include until($desktop) {
     letter-spacing: 0;
   }
   @include mobile {
     margin: 0;
-    text-align: center;
     font-size: 0.75rem;
   }
 }
