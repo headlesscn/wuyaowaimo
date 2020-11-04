@@ -79,17 +79,21 @@ const ModelTemplate = ({ data }) => {
           <div class="columns">
             <div class="column">
               <div>
-                <div class="columns is-mobile">
-                  
-                  {
-                  modelPictures.map(({ node }) => {
-                    return (
-                      <div class="column">
-                        <img src={node.Picturefile.publicURL} />
-                      </div>
-                    )
-                  })}
+                {modelPictures &&
+                <div>
+                  <h3>模特图集</h3>
+                  <div class="columns is-mobile">
+                    {
+                    modelPictures.map(({ node }) => {
+                      return (
+                        <div class="column">
+                          <img src={node.Picturefile.publicURL} />
+                        </div>
+                      )
+                    })}
+                  </div>
                 </div>
+                }
                 {modelVideos &&
                   <div>
                     <h3>模特视频</h3>

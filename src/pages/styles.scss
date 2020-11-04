@@ -3,26 +3,29 @@
 // Change variables before importing Bulma
 
 // Set brand colors
-$pink-light: #FFF1ED;
-$pink-medium: #FFE3E2;
-$pink: #FF8297;
+$WM-brand: #EA4C89;
 
-$blue-light: #5779BA;
-$blue: #374C73;
-$blue-dark: #1C2A45;
+$WM-blue-light: #5779BA;
+$WM-blue: #374C73;
+$WM-blue-dark: #1C2A45;
 
-$red: #CF1941;
-
-$green: #058762;
+$WM-gray-very-light: #F3F3F4;
+$WM-gray-light: #E7E7E9;
+$WM-gray-medium: #9E9EA7;
+$WM-gray: #6F6D7A;
+$WM-gray-dark: #333242;
+$WM-gray-very-dark: #0D0C22;
 
 // Update Bulma's variables
-$body-background-color: $pink-light;
-$text: $blue-dark;
-$primary: $blue;
-$link: $blue-light;
+$body-background-color: #fff;
+$text: $WM-gray-dark;
+$primary: $WM-brand;
+$link: $WM-blue;
 
-$footer-background-color: $body-background-color;
+$footer-background-color: $WM-gray-very-light;
 
+$card-shadow: 0;
+$card-background-color: $WM-gray-very-light;
 $card-content-padding: 0.5rem;
 
 @import "~bulma/bulma.sass";
@@ -65,4 +68,20 @@ $card-content-padding: 0.5rem;
 .kv-label {
   font-size: 0.75rem;
   font-weight: 600;
+}
+
+.city-list {
+  margin-left: 3rem;
+  letter-spacing: 0.2rem;
+  @include until($desktop) {
+    letter-spacing: 0;
+  }
+  @include mobile {
+    margin: 0;
+    text-align: center;
+    font-size: 0.75rem;
+  }
+}
+.city-list span:not(:first-child):before {
+  content: " • ";
 }

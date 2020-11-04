@@ -29,7 +29,7 @@ const IndexPage = ({ data }) => {
         <div class="columns is-multiline">
           {indexModels.map(({ node }) => {
             return (
-              <div class="column is-one-third-tablet is-one-quarter-desktop">
+              <div class="column is-half-mobile is-one-third-tablet is-one-quarter-desktop">
                 <Link to={`/model/${node.strapiId}`}>
                   <div class="card">
                     <div class="card-image">
