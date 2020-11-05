@@ -22,6 +22,9 @@ $text: $WM-gray-dark;
 $primary: $WM-brand;
 $link: $WM-blue;
 
+$title-size: 1.5rem;
+$subtitle-size: 1rem;
+
 $footer-background-color: $WM-gray-very-light;
 
 $card-shadow: 0;
@@ -29,6 +32,10 @@ $card-background-color: $WM-gray-very-light;
 $card-content-padding: 0.5rem;
 
 @import "~bulma/bulma.sass";
+
+.section {
+  padding: 1.5rem 1rem;
+}
 
 .site-logo-container {
   h3 {
@@ -55,6 +62,24 @@ $card-content-padding: 0.5rem;
   }
 }
 
+.city-list {
+  margin-left: 3rem;
+  padding: 0.5rem 1.5rem;
+  text-align: center;
+  letter-spacing: 0.2rem;
+  @include until($desktop) {
+    letter-spacing: 0;
+  }
+  @include mobile {
+    margin: 0;
+    font-size: 0.75rem;
+    background: $WM-gray-very-light;
+  }
+}
+.city-list span:not(:first-child):before {
+  content: " • ";
+}
+
 .price-table {
   font-size: 0.875rem;
   @include mobile {
@@ -62,6 +87,15 @@ $card-content-padding: 0.5rem;
   }
   @include until($desktop) {
     margin-right: 1rem;
+  }
+}
+
+.detail-page-cover-image {
+  @include tablet {
+    max-width: 90%;
+  }
+  @include desktop {
+    max-width: 80%;
   }
 }
 
@@ -85,18 +119,34 @@ $card-content-padding: 0.5rem;
   color: $WM-gray-dark;
 }
 
-.city-list {
-  margin-left: 3rem;
+.gallery-section {
+  background: $WM-gray-very-light;
+}
+.gallery-container {
   text-align: center;
-  letter-spacing: 0.2rem;
-  @include until($desktop) {
-    letter-spacing: 0;
+  a {
+    margin-right: 1rem;
   }
-  @include mobile {
-    margin: 0;
-    font-size: 0.75rem;
+  img {
+    height: 120px;
   }
 }
-.city-list span:not(:first-child):before {
-  content: " • ";
+.video-section {
+  background: $WM-gray-light;
+}
+.video-container {
+  text-align: center;
+  video {
+    max-height: 240px;
+  }
+}
+
+.long-pictures-container {
+  .long-picture-item {
+    @include desktop {
+      max-width: 70%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
 }

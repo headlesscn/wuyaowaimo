@@ -8,3 +8,6 @@ $(".modal-close").click(function() {
   $(this).parent().removeClass("is-active");
 });
 
+lightGallery(document.getElementById('lightgallery'), {
+  thumbnail: true
+});

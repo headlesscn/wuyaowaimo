@@ -1,8 +1,8 @@
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
-import PriceTable from "./pricetable.js"
-import LogoIcon from "../images/51waimo-icon.png"
+// import PriceTable from "./pricetable.js"
+// import LogoIcon from "../images/51waimo-icon.png"
 import Logo from "../images/logo.svg"
 
 const Header = ({ siteName, slogan, cities }) => (
@@ -12,21 +12,13 @@ const Header = ({ siteName, slogan, cities }) => (
         <div class="column is-one-quarter-tablet">
           <div class="site-logo-container">
             <Link to="/" className="has-text-primary">
-              <div class="media">
-                <figure class="media-left image is-64x64">
-                  <img src={LogoIcon} alt="Logo icon" />
-                </figure>
-                <div class="media-right ml-0">
-                  <figure class="image mt-1">
-                    <img src={Logo} alt={siteName} />
-                  </figure>
-                  <h3 class="has-text-weight-bold is-size-7">{slogan}</h3>
-                </div>
-              </div>
+              <h1>
+                <img src={Logo} alt={siteName} />
+              </h1>
+              <h3 class="has-text-weight-bold is-size-7">{slogan}</h3>
             </Link>
           </div>
         </div>
-          
         {cities &&
         <div class="column" style={{
           padding: 0

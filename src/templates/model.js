@@ -6,10 +6,10 @@ import SEO from "../components/seo"
 
 
 const ModelTemplate = ({ data }) => {
-  console.log(data);
   const model = data.strapiModel;
   const modelPictures = data.allStrapiPicture.edges;
   const modelVideos = data.allStrapiVideo.edges;
+  const modelLongPictures = data.allStrapiLongPicture.edges;
 
   function displayGender (gender) {
     var genderDisplayName = '女';
@@ -61,10 +61,9 @@ const ModelTemplate = ({ data }) => {
   return (
     <Layout>
       <Helmet>
-        <link href="https://unpkg.com/cloudinary-video-player@1.4.3/dist/cld-video-player.min.css" rel="stylesheet" />
-        <script src="https://unpkg.com/cloudinary-core@2.10.3/cloudinary-core-shrinkwrap.min.js" type="text/javascript"></script>
-        <script src="https://unpkg.com/cloudinary-video-player@1.4.3/dist/cld-video-player.min.js" type="text/javascript"></script>
-
+        <link href="https://sachinchoolur.github.io/lightgallery.js/lightgallery/css/lightgallery.css" rel="stylesheet" />
+        <script defer src="https://sachinchoolur.github.io/lightgallery.js/lightgallery/js/lightgallery.js" type="text/javascript" />
+        <script defer src="https://sachinchoolur.github.io/lightgallery.js/lightgallery/js/lg-thumbnail.js" type="text/javascript" />
         <script src="https://cdn.bootcdn.net/ajax/libs/jquery/2.2.4/jquery.min.js" type="text/javascript" />
         <script src={withPrefix('model-script.js')} type="text/javascript" />
       </Helmet>
@@ -79,37 +78,11 @@ const ModelTemplate = ({ data }) => {
           <div class="columns">
             <div class="column">
               <div>
-                {modelPictures &&
                 <div>
-                  <h3>模特图集</h3>
-                  <div class="columns is-mobile">
-                    {
-                    modelPictures.map(({ node }) => {
-                      return (
-                        <div class="column">
-                          <img src={node.Picturefile.publicURL} />
-                        </div>
-                      )
-                    })}
-                  </div>
+                  <figure class="image detail-page-cover-image">
+                    <img src={model.CoverPicture.publicURL} alt="" />
+                  </figure>
                 </div>
-                }
-                {modelVideos &&
-                  <div>
-                    <h3>模特视频</h3>
-                    <div class="columns is-mobile">
-                    {modelVideos.map(({ node }) => {
-                      return (
-                        <div class="column">
-                          <video controls>
-                            <source src={node.VideoFile.publicURL} />
-                          </video>
-                        </div>
-                      )
-                    })}
-                    </div>
-                  </div>
-                }
               </div>
             </div>
             <div class="column kv-container">
@@ -236,7 +209,6 @@ const ModelTemplate = ({ data }) => {
                             <p>请用微信扫描左侧的二维码联系我，我将为您对接模特本人，协助下单并提供全程服务。</p>
                           </div>
                         </div>
-                        
                       </div>
                     </div>
                     <button class="modal-close is-large" aria-label="close"></button>
@@ -245,6 +217,53 @@ const ModelTemplate = ({ data }) => {
               }
             </div>
           </div>
+        </div>
+      </div>
+      {modelPictures &&
+        <div class="section gallery-section">
+          <div class="container gallery-container">
+            <div id="lightgallery">
+              {
+                modelPictures.map(({ node }) => {
+                  return (
+                    <a href={node.Picturefile.publicURL}>
+                      <img src={node.Picturefile.publicURL} />
+                    </a>
+                  )
+                })
+              }
+            </div>
+          </div>
+        </div>
+      }
+      {modelVideos &&
+        <div class="section video-section">
+          <div class="container video-container">
+            <div class="columns is-mobile">
+                {modelVideos.map(({ node }) => {
+                  return (
+                    <div class="column">
+                      <video controls>
+                        <source src={node.VideoFile.publicURL} />
+                      </video>
+                    </div>
+                  )
+                })}
+              </div>
+            </div>
+          </div>
+      }
+      <div class="section">
+        <div class="container long-pictures-container">
+            {
+              modelLongPictures.map(({ node }) => {
+                return (
+                  <div class="long-picture-item">
+                    <img src={node.LongPictureFile.publicURL} />
+                  </div>
+                )
+              })
+            }
         </div>
       </div>
     </Layout>
@@ -282,6 +301,21 @@ export const pageQuery = graphql`
       edges {
         node {
           VideoFile {
+            publicURL
+          }
+        }
+      }
+    }
+    allStrapiLongPicture(
+      filter: {
+        model: {
+          id: { eq: $strapiId }
+        }
+      }
+    )  {
+      edges {
+        node {
+          LongPictureFile {
             publicURL
           }
         }

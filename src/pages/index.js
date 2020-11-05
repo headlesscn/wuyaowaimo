@@ -26,6 +26,7 @@ const IndexPage = ({ data }) => {
 
     <div class="section">
       <div class="container is-max-widescreen">
+        <h1 class="title">精选外模</h1>
         <div class="columns is-mobile is-multiline">
           {indexModels.map(({ node }) => {
             return (
@@ -33,7 +34,7 @@ const IndexPage = ({ data }) => {
                 <Link to={`/model/${node.strapiId}`}>
                   <div class="card">
                     <div class="card-image">
-                      <figure class="image is-square cover-image-thumbnail">
+                      <figure class="image is-4by3 cover-image-thumbnail">
                         <img src={node.CoverPicture.publicURL} alt="" />
                       </figure>
                     </div>

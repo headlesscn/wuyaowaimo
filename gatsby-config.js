@@ -60,6 +60,7 @@ module.exports = {
           "agent",
           "picture",
           "video",
+          "long-picture",
         ],
         queryLimit: 1000,
       },
